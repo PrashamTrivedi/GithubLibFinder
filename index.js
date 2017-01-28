@@ -11,6 +11,7 @@ restService.post('/webhook',function(req,res){
      var speech = 'empty speech';
     if(req.body){
         if(req.body.result){
+            console.log(req.body.result)
             if(req.body.result.parameters){
                  if (requestBody.result.fulfillment) {
                     speech += requestBody.result.fulfillment.speech;
