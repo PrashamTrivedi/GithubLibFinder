@@ -17,6 +17,8 @@ restService.post('/webhook',function(req,res){
     try{
         console.log(process.env.CLIENTID);
         console.log(process.env.SECRET);
+    }catch(err){
+        console.log(err);
     }
     // oauth key/secret (to get a token)
     // github.authenticate({
