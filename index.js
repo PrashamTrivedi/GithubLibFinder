@@ -68,7 +68,7 @@ restService.post('/webhook',function(req,res){
         }
 
         if(speech){
-            github.search.code({
+            GitHubApi.search.code({
                 q:keyword+' '+functionality+' '+topic+' language:'+language,
             },function(err,res){
                 if(!err){
