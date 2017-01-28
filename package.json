@@ -1,0 +1,16 @@
+{
+  "name": "githublibfindner",
+  "version": "1.0.0",
+  "description": "Library Finder for Github",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lib",
+    "finder",
+    "github"
+  ],
+  "author": "Prasham H Trivedi",
+  "license": "ISC"
+}
