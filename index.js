@@ -6,7 +6,6 @@ const GitHubApi = require("github");
 
 const restService = express();
 restService.use(bodyParser.json());
-var config = require('./keys.json');
 
 
 
