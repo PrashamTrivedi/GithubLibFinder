@@ -10,27 +10,29 @@ restService.post('/webhook',function(req,res){
     console.log('hook request');
      var speech = 'empty speech';
     if(req.body){
-        if(req.body.result){
-            console.log(req.body.result)
-            if(req.body.result.parameters){
+        var requestBody = req.body;
+        if(requestBody.result){
+            console.log(requestBody.result)
+            if(requestBody.result.parameters){
+                var parameters = requestBody.result.parameters;
                  if (requestBody.result.fulfillment) {
                     speech += requestBody.result.fulfillment.speech;
                     speech += ' ';
                 }
 
-                if(req.body.parameters.Tech){
-                    console.log("Tech Object is "+req.body.parameters.Tech)
-                    speech +='Tech: '+req.body.parameters.Tech;
+                if(parameters.Tech){
+                    console.log("Tech Object is "+parameters.Tech)
+                    speech +='Tech: '+parameters.Tech;
                     speech += ' ';
                 }
-                if(req.body.parameters.Functionality){
-                    console.log("Functionality Object is "+req.body.parameters.Functionality)
-                    speech +='Functionality: '+req.body.parameters.Functionality;
+                if(parameters.Functionality){
+                    console.log("Functionality Object is "+parameters.Functionality)
+                    speech +='Functionality: '+parameters.Functionality;
                     speech += ' ';
                 }
-                if(req.body.parameters.Keyword){
-                    console.log("Keyword Object is "+req.body.parameters.Keyword)
-                    speech +='Keywords: '+req.body.parameters.Keyword;
+                if(parameters.Keyword){
+                    console.log("Keyword Object is "+parameters.Keyword)
+                    speech +='Keywords: '+parameters.Keyword;
                     speech += ' ';
                 }
                 
