@@ -14,12 +14,16 @@ var config = require('./keys.json');
 
 restService.post('/webhook',function(req,res){
     console.log('hook request');
+    try{
+        console.log(process.env.CLIENTID);
+        console.log(process.env.SECRET);
+    }
     // oauth key/secret (to get a token)
-    github.authenticate({
-            type: "oauth",
-            key: process.env.CLIENTID || config.githubClientId,
-            secret: process.env.SECRET || config.githubSecret
-    })
+    // github.authenticate({
+    //         type: "oauth",
+    //         key: process.env.CLIENTID || config.githubClientId,
+    //         secret: process.env.SECRET || config.githubSecret
+    // })
      var speech = 'empty speech';
      var topic = '';
      var functionality = '';
