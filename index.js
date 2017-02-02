@@ -35,8 +35,8 @@ restService.post('/webhook',function(req,res){
     // oauth key/secret (to get a token)
     github.authenticate({
             type: "oauth",
-            key: process.env.CLIENTID || config.githubClientId,
-            secret: process.env.SECRET || config.githubSecret
+            key: process.env.CLIENTID,
+            secret: process.env.SECRET
     })
      var speech = 'empty speech';
      var topic = '';
