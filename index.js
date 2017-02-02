@@ -12,7 +12,6 @@ var github = new GitHubApi({
     headers: {
         "user-agent": "My-Cool-GitHub-App" // GitHub is happy with a unique user agent
     },
-    Promise: require('bluebird'),
     followRedirects: false, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
     timeout: 5000
 });
