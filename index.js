@@ -3,6 +3,19 @@
 const express = require('express');
 const bodyParser = require('body-parser')
 const GitHubApi = require("github");
+var github = new GitHubApi({
+    // optional
+    debug: true,
+    protocol: "https",
+    host: "api.github.com", // should be api.github.com for GitHub
+    pathPrefix: "/api/v3", // for some GHEs; none for GitHub
+    headers: {
+        "user-agent": "My-Cool-GitHub-App" // GitHub is happy with a unique user agent
+    },
+    Promise: require('bluebird'),
+    followRedirects: false, // default: true; there's currently an issue with non-get redirects, so allow ability to disable follow-redirects
+    timeout: 5000
+});
 
 const restService = express();
 restService.use(bodyParser.json());
@@ -20,11 +33,11 @@ restService.post('/webhook',function(req,res){
         console.log(err);
     }
     // oauth key/secret (to get a token)
-    // github.authenticate({
-    //         type: "oauth",
-    //         key: process.env.CLIENTID || config.githubClientId,
-    //         secret: process.env.SECRET || config.githubSecret
-    // })
+    github.authenticate({
+            type: "oauth",
+            key: process.env.CLIENTID || config.githubClientId,
+            secret: process.env.SECRET || config.githubSecret
+    })
      var speech = 'empty speech';
      var topic = '';
      var functionality = '';
@@ -68,7 +81,7 @@ restService.post('/webhook',function(req,res){
         }
 
         if(speech){
-            GitHubApi.search.code({
+            github.search.code({
                 q:keyword+' '+functionality+' '+topic+' language:'+language,
             },function(err,res){
                 if(!err){
