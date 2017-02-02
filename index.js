@@ -90,11 +90,9 @@ restService.post('/webhook',function(req,res){
                         source: 'apiai-webhook-sample'
                     });
                 }else{
-                    return json({
-                        speech: err,
-                        displayText: err,
-                        source: 'apiai-webhook-sample'
-                    });
+                    var result={};
+                    result.push({speech:err,displayText:err,source:'apiai-webhook-sample'})
+                    return JSON.stringify(result);
                     
                 }
             })   
