@@ -92,8 +92,10 @@ restService.post('/webhook',function(req,res){
                     });
                 }else{
                     console.log("Returning Error : "+err.message);
-                    return JSON.stringify({speech:err.message,displayText:err.message,source:'apiai-webhook-sample'});
-                    
+                    return res.status(err.code).json({
+                        code:err.code,
+                        errorType: err.message
+                    });      
                 }
             })   
         }else{
