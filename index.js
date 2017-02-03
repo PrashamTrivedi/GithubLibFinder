@@ -80,8 +80,9 @@ restService.post('/webhook',function(req,res){
         }
 
         if(speech){
+            var searchTerm=keyword.trim()+functionality.trim()+topic.trim();
             github.search.code({
-                q:keyword+functionality+topic+' language:'+language,
+                q:searchTerm.trim()+' language:'+language.trim(),
             },function(err,response){
                 if(!err){
                     console.log("Returning Response");
