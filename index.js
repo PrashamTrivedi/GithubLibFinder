@@ -82,7 +82,7 @@ restService.post('/webhook',function(req,res){
         if(speech){
             github.search.code({
                 q:keyword+' '+functionality+' '+topic+' language:'+language,
-            },function(err,res){
+            },function(err,response){
                 if(!err){
                     console.log("Returning Response");
                     return res.json({
