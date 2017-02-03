@@ -84,12 +84,14 @@ restService.post('/webhook',function(req,res){
                 q:keyword+' '+functionality+' '+topic+' language:'+language,
             },function(err,res){
                 if(!err){
+                    console.log("Returning Response");
                     return res.json({
                         speech: res,
                         displayText: res,
                         source: 'apiai-webhook-sample'
                     });
                 }else{
+                    console.log("Returning Error : "+err.message);
                     return JSON.stringify({speech:err.message,displayText:err.message,source:'apiai-webhook-sample'});
                     
                 }
