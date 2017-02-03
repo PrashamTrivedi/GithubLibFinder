@@ -55,22 +55,22 @@ restService.post('/webhook',function(req,res){
                 }
 
                 if(parameters.Language){
-                    language = parameters.Language;
+                    language = parameters.Language.toString();
                     console.log("Language Object is "+parameters.Language)
                     speech +='Searched in these Language: '+parameters.Language;
                     speech += ' ';
                 }
                 if(parameters.Tech){
-                    topic = ' '+parameters.Tech;
+                    topic = ' '+parameters.Tech.toString();
                     console.log("Tech Object is "+parameters.Tech)
                                     }
                 if(parameters.Functionality){
-                    functionality = ' '+parameters.Functionality;
+                    functionality = ' '+parameters.Functionality.toString();
                     console.log("Functionality Object is "+parameters.Functionality)
                     
                 }
                 if(parameters.Keyword){
-                    keyword = parameters.Keyword;
+                    keyword = parameters.Keyword.toString();
                     console.log("Keyword Object is "+parameters.Keyword)
                     speech +='Searched in these Keywords: '+parameters.Keyword;
                     speech += ' ';
