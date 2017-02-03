@@ -37,11 +37,11 @@ restService.post('/webhook',function(req,res){
             key: process.env.CLIENTID,
             secret: process.env.SECRET
     })
-     var speech = 'empty speech';
-     var topic = '';
-     var functionality = '';
-     var keyword = '';
-     var language = ''; 
+     var speech = "empty speech";
+     var topic = "";
+     var functionality = "";
+     var keyword = "";
+     var language = ""; 
     if(req.body){
         var requestBody = req.body;
         if(requestBody.result){
@@ -82,7 +82,7 @@ restService.post('/webhook',function(req,res){
         if(speech){
             var searchTerm=keyword.trim()+functionality.trim()+topic.trim();
             github.search.code({
-                q:searchTerm.trim()+' language:'+language.trim(),
+                q:searchTerm.trim()+" language:"+language.trim(),
             },function(err,response){
                 if(!err){
                     console.log("Returning Response");
