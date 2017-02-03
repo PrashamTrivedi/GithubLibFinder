@@ -91,11 +91,20 @@ restService.post('/webhook',function(req,res){
                         source: 'apiai-webhook-sample'
                     });
                 }else{
-                    console.log("Returning Error : "+err.message);
-                    return res.status(err.code).json({
-                        code:err.code,
-                        errorType: err.message
-                    });      
+                    if(err.code==404){
+                        return res.json({
+                            speech: "This is not the library you are looking for.",
+                            displayText: "Library not found",
+                            source: 'apiai-webhook-sample'
+                        });
+                    }else{
+                        console.log("Returning Error : "+err.message);
+                        return res.json({
+                            speech: "Something is gone wrong",
+                            displayText: "Something is gone wrong "+err.message,
+                            source: "apiai-webhook-example"
+                        });   
+                    }
                 }
             })   
         }else{
