@@ -61,11 +61,11 @@ restService.post('/webhook',function(req,res){
                     speech += ' ';
                 }
                 if(parameters.Tech){
-                    topic = parameters.Tech;
+                    topic = ' '+parameters.Tech;
                     console.log("Tech Object is "+parameters.Tech)
                                     }
                 if(parameters.Functionality){
-                    functionality = parameters.Functionality;
+                    functionality = ' '+parameters.Functionality;
                     console.log("Functionality Object is "+parameters.Functionality)
                     
                 }
@@ -81,7 +81,7 @@ restService.post('/webhook',function(req,res){
 
         if(speech){
             github.search.code({
-                q:keyword+' '+functionality+' '+topic+' language:'+language,
+                q:keyword+functionality+topic+' language:'+language,
             },function(err,response){
                 if(!err){
                     console.log("Returning Response");
